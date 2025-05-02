@@ -10,7 +10,6 @@ public class FirstPersonCamera : MonoBehaviour
 
     [Header("Photo Capture")]
     public KeyCode photoKey = KeyCode.Mouse0; // Left-click to take photo
-    public LayerMask occlusionLayers; // Layers that block visibility (e.g., walls)
     public float maxPhotoDistance = 20f; // Max distance to check for objects
     public List<GameObject> targetObjects; // Suspected objects to check
 
@@ -28,6 +27,17 @@ public class FirstPersonCamera : MonoBehaviour
 
     void Update()
     {
+       HandleMouseLook();
+
+        // Take photo on key press
+        if (Input.GetKeyDown(photoKey))
+        {
+            TryCapturePhoto();
+        }
+    }
+
+    private void HandleMouseLook()
+    {
         // Handle mouse look
         float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
         float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
@@ -37,12 +47,6 @@ public class FirstPersonCamera : MonoBehaviour
 
         transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
         playerBody.Rotate(Vector3.up * mouseX);
-
-        // Take photo on key press
-        if (Input.GetKeyDown(photoKey))
-        {
-            TryCapturePhoto();
-        }
     }
 
     private void TryCapturePhoto()
@@ -83,20 +87,21 @@ public class FirstPersonCamera : MonoBehaviour
         Renderer renderer = target.GetComponent<Renderer>();
         if (renderer == null) return false;
 
-        // Check if object is within camera view
-        Vector3 viewportPos = playerCamera.WorldToViewportPoint(target.transform.position);
-        if (viewportPos.x < 0 || viewportPos.x > 1 || viewportPos.y < 0 || viewportPos.y > 1 || viewportPos.z <= 0)
+        // 1. Kamera görüş açısı içinde mi?
+        Vector3 viewportPos = playerCamera.WorldToViewportPoint(renderer.bounds.center);
+        if (viewportPos.z <= 0 || viewportPos.x < 0 || viewportPos.x > 1 || viewportPos.y < 0 || viewportPos.y > 1)
+            return false;
+
+        // 2. Raycast ile arada engel var mı kontrol et
+        Vector3 direction = (renderer.bounds.center - playerCamera.transform.position).normalized;
+        float distance = Vector3.Distance(playerCamera.transform.position, renderer.bounds.center);
+
+        if (Physics.Raycast(playerCamera.transform.position, direction, out RaycastHit hit, distance))
         {
-            return false; // Outside camera view
+            if (hit.collider.gameObject != target)
+                return false; // Arada başka bir şey var
         }
 
-        // Check for occlusion (if any obstacle blocks the view)
-        Ray ray = new Ray(playerCamera.transform.position, (target.transform.position - playerCamera.transform.position).normalized);
-        if (Physics.Raycast(ray, out RaycastHit hit, maxPhotoDistance, occlusionLayers))
-        {
-            return hit.collider.gameObject == target; // True if nothing blocks it
-        }
-
-        return false;
+        return true; // Kamera görüyor ve arada engel yok
     }
 }
