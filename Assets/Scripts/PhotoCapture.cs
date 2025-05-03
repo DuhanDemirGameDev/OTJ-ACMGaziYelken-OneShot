@@ -32,6 +32,7 @@ public class PhotoCapture : MonoBehaviour
         // Fotoğraf çek
         if (isInPhotoMode && Input.GetKeyDown(takePhotoKey) && !isReviewingPhoto)
         {
+            
             StartCoroutine(CaptureAndReviewPhoto());
         }
 
