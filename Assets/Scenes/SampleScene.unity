@@ -1038,7 +1038,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &688491093
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3181,7 +3181,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2107233655
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3557,7 +3557,12 @@ PrefabInstance:
         type: 3}
       propertyPath: cameraUI
       value: 
-      objectReference: {fileID: 1515036996}
+      objectReference: {fileID: 1515036999}
+    - target: {fileID: 932379907291340416, guid: 4104b918a5cd942459d9f4f45ce0ad70,
+        type: 3}
+      propertyPath: photoKey
+      value: 32
+      objectReference: {fileID: 0}
     - target: {fileID: 932379907291340416, guid: 4104b918a5cd942459d9f4f45ce0ad70,
         type: 3}
       propertyPath: flashImage
@@ -3590,6 +3595,16 @@ PrefabInstance:
       objectReference: {fileID: 8400000, guid: 9da1bd6174fdc6a4594bd949dea66587, type: 2}
     - target: {fileID: 932379907291340416, guid: 4104b918a5cd942459d9f4f45ce0ad70,
         type: 3}
+      propertyPath: takePhotoKey
+      value: 114
+      objectReference: {fileID: 0}
+    - target: {fileID: 932379907291340416, guid: 4104b918a5cd942459d9f4f45ce0ad70,
+        type: 3}
+      propertyPath: photoReviewUI
+      value: 
+      objectReference: {fileID: 688491094}
+    - target: {fileID: 932379907291340416, guid: 4104b918a5cd942459d9f4f45ce0ad70,
+        type: 3}
       propertyPath: photoUIScreen
       value: 
       objectReference: {fileID: 1515036996}
@@ -3603,6 +3618,16 @@ PrefabInstance:
       propertyPath: instructionText
       value: 
       objectReference: {fileID: 1748601785}
+    - target: {fileID: 932379907291340416, guid: 4104b918a5cd942459d9f4f45ce0ad70,
+        type: 3}
+      propertyPath: photoModeCanvas
+      value: 
+      objectReference: {fileID: 1515036996}
+    - target: {fileID: 932379907291340416, guid: 4104b918a5cd942459d9f4f45ce0ad70,
+        type: 3}
+      propertyPath: photoReviewPanel
+      value: 
+      objectReference: {fileID: 2107233654}
     - target: {fileID: 932379907291340416, guid: 4104b918a5cd942459d9f4f45ce0ad70,
         type: 3}
       propertyPath: photoRenderTexture
