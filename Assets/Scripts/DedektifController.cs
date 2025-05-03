@@ -6,7 +6,7 @@ using UnityEngine;
 public class DedektifController : MonoBehaviour
 {
     [Header("Movement Settings")] 
-    public float walkSpeed = 4f;
+    public float walkSpeed = 2f;
     public float gravity = -9.81f;
     public float jumpHeight = 1.5f;
 
@@ -16,8 +16,14 @@ public class DedektifController : MonoBehaviour
     public LayerMask groundMask;
     private bool isGrounded;
 
+    [Header("Foot Step Audio")]
+    public AudioSource audioSource;
+    public AudioClip[] footstepClips;
+
+    public float stepDelay = 0.5f;
+    private float stepTimer = 0f;
     
-    private CharacterController controller;
+    public CharacterController controller;
 
     void Start()
     {
@@ -27,11 +33,57 @@ public class DedektifController : MonoBehaviour
 
     void Update()
     {
+       
+       
         CheckGround();
         
         Movement();
-        // Zıplama
-        if (Input.GetButtonDown("Jump") && isGrounded)
+        Jump();
+        
+    }
+
+    
+    
+
+    void PlayFootstep()
+        {
+            if (footstepClips.Length > 0)
+            {
+                int index = Random.Range(0, footstepClips.Length);
+                audioSource.PlayOneShot(footstepClips[index]);
+            }
+        }
+    
+    private void Movement()
+    {
+        float x = Input.GetAxis("Horizontal");
+        float z = Input.GetAxis("Vertical");
+
+        Vector3 move = (transform.right * x + transform.forward * z);
+        move.y = 0f;
+
+        bool isWalking = (x != 0 || z != 0) && isGrounded;
+
+        if (isWalking)
+        {
+            stepTimer -= Time.deltaTime;
+            if (stepTimer <= 0f)
+            {
+                PlayFootstep();
+                stepTimer = stepDelay;
+            }
+        }
+        else
+        {
+            stepTimer = 0f;
+        }
+
+        controller.Move(move * (walkSpeed * Time.deltaTime));
+    }
+
+    private void Jump()
+    {
+       if (Input.GetButtonDown("Jump") && isGrounded)
         {
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
         }
@@ -40,28 +92,7 @@ public class DedektifController : MonoBehaviour
         
         controller.Move(velocity * Time.deltaTime);
     }
-
-    private void Movement()
-    {
-        float x = Input.GetAxis("Horizontal");
-        float z = Input.GetAxis("Vertical");
-
-        Vector3 move = (transform.right * x + transform.forward * z);
-        move.y = 0f;
-        
-        controller.Move(move * (walkSpeed * Time.deltaTime));
-    }
-/*
-    private void Jump()
-    {
-        bool jump = Input.GetKeyDown(KeyCode.Space);
-        if (jump)
-        {
-            controller.velocity.y(jumpHeight * -2f * gravity);
-        }
-        
-    }
-    */
+    
 
     private void CheckGround()
     {
