@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(CharacterController))]
 public class DedektifController : MonoBehaviour
@@ -24,6 +26,7 @@ public class DedektifController : MonoBehaviour
     private float stepTimer = 0f;
     
     public CharacterController controller;
+    public Canvas pauseMenu;
 
     void Start()
     {
@@ -39,7 +42,9 @@ public class DedektifController : MonoBehaviour
         
         Movement();
         Jump();
+
         
+
     }
 
     
