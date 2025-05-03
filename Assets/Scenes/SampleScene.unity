@@ -1774,10 +1774,25 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2051569399319104209, guid: 4104b918a5cd942459d9f4f45ce0ad70,
+        type: 3}
+      propertyPath: m_Height
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2524680957663745048, guid: 4104b918a5cd942459d9f4f45ce0ad70,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2593345713957842036, guid: 4104b918a5cd942459d9f4f45ce0ad70,
         type: 3}
       propertyPath: m_Name
       value: Dedektif
+      objectReference: {fileID: 0}
+    - target: {fileID: 2776894024157998768, guid: 4104b918a5cd942459d9f4f45ce0ad70,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3602901968428761985, guid: 4104b918a5cd942459d9f4f45ce0ad70,
         type: 3}

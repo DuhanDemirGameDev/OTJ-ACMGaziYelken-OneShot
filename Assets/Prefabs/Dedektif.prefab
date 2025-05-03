@@ -513,7 +513,6 @@ GameObject:
   - component: {fileID: 2776894024157998768}
   - component: {fileID: 5770927281483818667}
   - component: {fileID: 6444689648827303916}
-  - component: {fileID: 3602901968428761985}
   - component: {fileID: 932379907291340416}
   m_Layer: 0
   m_Name: PhotoCamera
@@ -632,26 +631,6 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
---- !u!114 &3602901968428761985
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8481602664060686576}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 837839ec1bbe5f7409cf67ed52f07684, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mouseSensitivity: 300
-  playerBody: {fileID: 365331430005145319}
-  photoKey: 101
-  maxPhotoDistance: 20
-  targetObjects:
-  - {fileID: 0}
-  shutterSound: {fileID: 8300000, guid: 0d8627befa8031c439e2ef9d77764500, type: 3}
-  photoFlashEffect: {fileID: 0}
 --- !u!114 &932379907291340416
 MonoBehaviour:
   m_ObjectHideFlags: 0
