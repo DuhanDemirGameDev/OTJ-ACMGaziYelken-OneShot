@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -9,37 +10,61 @@ public class PhotoCapture : MonoBehaviour
     public Camera photoCamera;
     public RenderTexture renderTexture;
 
-    public GameObject photoModeCanvas;       // Kamera modundayken gösterilen UI (nişangah vb.)
-    public GameObject photoReviewPanel;      // Fotoğraf incelenme ekranı (Panel GameObject)
-    public RawImage photoDisplay;            // Panel içindeki RawImage (fotoğraf burada gösterilir)
+    public GameObject photoModeCanvas;
+    public GameObject photoReviewPanel;
+    public RawImage photoDisplay;
+
     public KeyCode enterPhotoModeKey = KeyCode.E;
     public KeyCode takePhotoKey = KeyCode.Mouse0;
     public KeyCode exitReviewKey = KeyCode.Space;
 
+    [Header("Photo Capture")]
+    public float maxPhotoDistance = 20f;
+    public List<GameObject> targetObjects;
+
+    [Header("Photo Feedback")]
+    public AudioClip shutterSound;
+    public GameObject photoFlashEffect;
+
+    [Header("Review Info")]
+    public GameObject retryPanel;
+    public TextMeshProUGUI retryInfoText;
+    
     private bool isInPhotoMode = false;
     private bool isReviewingPhoto = false;
 
+    private Camera playerCamera;
+    private List<GameObject> missedEvidence = new List<GameObject>();
+
+    private bool waitingForRetry = false;
+    void Start()
+    {
+        playerCamera = Camera.main;
+        Cursor.visible = false;
+        retryPanel.SetActive(false);
+    }
+
     void Update()
     {
-        // Fotoğraf moduna gir/çık
         if (Input.GetKeyDown(enterPhotoModeKey) && !isReviewingPhoto)
         {
             isInPhotoMode = !isInPhotoMode;
             photoModeCanvas.SetActive(isInPhotoMode);
-            Cursor.visible = false;
         }
 
-        // Fotoğraf çek
         if (isInPhotoMode && Input.GetKeyDown(takePhotoKey) && !isReviewingPhoto)
         {
-            
             StartCoroutine(CaptureAndReviewPhoto());
         }
 
-        // İnceleme ekranından çık ve sonraki levele geç
         if (isReviewingPhoto && Input.GetKeyDown(exitReviewKey))
         {
-            ProceedToNextLevel();
+            FinalizeReview();
+        }
+        
+        if (waitingForRetry && Input.GetKeyDown(KeyCode.F))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
 
@@ -47,6 +72,11 @@ public class PhotoCapture : MonoBehaviour
     {
         isReviewingPhoto = true;
 
+        if (shutterSound) AudioSource.PlayClipAtPoint(shutterSound, transform.position);
+        yield return new WaitForSeconds(0.1f);
+        if (photoFlashEffect) photoFlashEffect.SetActive(true);
+
+        yield return new WaitForSeconds(0.1f);
         yield return new WaitForEndOfFrame();
 
         photoCamera.Render();
@@ -57,25 +87,79 @@ public class PhotoCapture : MonoBehaviour
         photo.Apply();
         RenderTexture.active = null;
 
-        // Kamera modunu kapat
         photoModeCanvas.SetActive(false);
         isInPhotoMode = false;
 
-        // İnceleme ekranını aç, çekilen fotoğrafı göster
         photoReviewPanel.SetActive(true);
         photoDisplay.texture = photo;
 
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+
+        EvaluatePhoto();
     }
 
-    private void ProceedToNextLevel()
+    private void EvaluatePhoto()
     {
-        // İnceleme panelini kapat
+        missedEvidence.Clear();
+
+        foreach (GameObject obj in targetObjects)
+        {
+            if (!IsObjectSeen(obj))
+            {
+                missedEvidence.Add(obj);
+            }
+        }
+
+        if (missedEvidence.Count == 0)
+        {
+            Debug.Log("📸 Perfect shot! All evidence captured.");
+        }
+        else
+        {
+            Debug.Log("❌ Missed objects: " + string.Join(", ", missedEvidence.ConvertAll(o => o.name)));
+        }
+    }
+
+    private void FinalizeReview()
+    {
         photoReviewPanel.SetActive(false);
         isReviewingPhoto = false;
 
-        // (Örnek olarak sahneyi değiştiriyoruz)
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        if (missedEvidence.Count == 0)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
+        else
+        {
+            retryPanel.SetActive(true);
+            retryInfoText.text = $"Eksik delil sayısı: {missedEvidence.Count}";
+            waitingForRetry = true; // Bayrağı aç
+        }
+    }
+
+    public bool IsObjectSeen(GameObject target)
+    {
+        if (target == null || playerCamera == null)
+            return false;
+
+        Renderer renderer = target.GetComponent<Renderer>();
+        if (renderer == null)
+            return false;
+
+        Vector3 viewportPos = playerCamera.WorldToViewportPoint(renderer.bounds.center);
+        if (viewportPos.z <= 0 || viewportPos.x < 0 || viewportPos.x > 1 || viewportPos.y < 0 || viewportPos.y > 1)
+            return false;
+
+        Vector3 direction = (renderer.bounds.center - playerCamera.transform.position).normalized;
+        float distance = Vector3.Distance(playerCamera.transform.position, renderer.bounds.center);
+
+        if (Physics.Raycast(playerCamera.transform.position, direction, out RaycastHit hit, distance))
+        {
+            if (hit.collider.gameObject != target)
+                return false;
+        }
+
+        return true;
     }
 }
