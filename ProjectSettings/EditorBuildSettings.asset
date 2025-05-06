@@ -19,9 +19,12 @@ EditorBuildSettings:
     guid: 6ce105e27a1366f478aff1a5c4de9ff2
   - enabled: 1
     path: Assets/Scenes/Level 2.unity
+<<<<<<< HEAD
+=======
     guid: 0b5726bf86b376a43a5f05c98958f7de
   - enabled: 1
     path: Assets/Scenes/Level 3.unity
+>>>>>>> parent of fc2ec29 (Dedektif Tarek Son)
     guid: abf4ba55a03a1ca44be9676ba5e3923a
   - enabled: 1
     path: Assets/Scenes/Outro.unity
