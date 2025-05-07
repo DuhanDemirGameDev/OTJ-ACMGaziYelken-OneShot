@@ -1,0 +1,60 @@
+[33mf412b71[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mDuhan[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;31morigin/Duhan[m[33m, [m[1;32mmain[m[33m)[m HEAD@{0}: checkout: moving from d356fec495b076e825f165adcbd75535b5d50768 to Duhan
+[33md356fec[m HEAD@{1}: checkout: moving from Duhan to d356fec
+[33mf412b71[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mDuhan[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;31morigin/Duhan[m[33m, [m[1;32mmain[m[33m)[m HEAD@{2}: checkout: moving from main to Duhan
+[33mf412b71[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mDuhan[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;31morigin/Duhan[m[33m, [m[1;32mmain[m[33m)[m HEAD@{3}: merge Duhan: Fast-forward
+[33m86a4023[m HEAD@{4}: checkout: moving from Duhan to main
+[33mf412b71[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mDuhan[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;31morigin/Duhan[m[33m, [m[1;32mmain[m[33m)[m HEAD@{5}: commit: Dedektif Tarek Son
+[33m86a4023[m HEAD@{6}: reset: moving to 86a402302d5712f52994255a20a2f0049ac8268c
+[33mfc2ec29[m HEAD@{7}: reset: moving to fc2ec29613c5790adfa689d73cc30d30cb9f8b16
+[33md356fec[m HEAD@{8}: commit: Ogrenme
+[33mfc2ec29[m HEAD@{9}: reset: moving to fc2ec29613c5790adfa689d73cc30d30cb9f8b16
+[33m5e33e1f[m HEAD@{10}: checkout: moving from fc2ec29613c5790adfa689d73cc30d30cb9f8b16 to Duhan
+[33mfc2ec29[m HEAD@{11}: checkout: moving from Duhan to fc2ec29613c5790adfa689d73cc30d30cb9f8b16
+[33m5e33e1f[m HEAD@{12}: checkout: moving from fc2ec29613c5790adfa689d73cc30d30cb9f8b16 to Duhan
+[33mfc2ec29[m HEAD@{13}: checkout: moving from Duhan to fc2ec29613c5790adfa689d73cc30d30cb9f8b16
+[33m5e33e1f[m HEAD@{14}: commit: Son
+[33mfc2ec29[m HEAD@{15}: reset: moving to fc2ec29613c5790adfa689d73cc30d30cb9f8b16
+[33m9298cd9[m HEAD@{16}: commit: Dedektif Tarek Son
+[33mfc2ec29[m HEAD@{17}: commit: Dedektif Tarek Son
+[33m86a4023[m HEAD@{18}: checkout: moving from main to Duhan
+[33m86a4023[m HEAD@{19}: merge Duhan: Fast-forward
+[33m6866fca[m HEAD@{20}: checkout: moving from Duhan to main
+[33m86a4023[m HEAD@{21}: commit: Sürerim Buluttan Tarlaları
+[33m1478acc[m HEAD@{22}: commit: Resim Gösterme Düzgün
+[33m6866fca[m HEAD@{23}: checkout: moving from main to Duhan
+[33m6866fca[m HEAD@{24}: merge Duhan: Fast-forward
+[33me05dc43[m HEAD@{25}: checkout: moving from Duhan to main
+[33m6866fca[m HEAD@{26}: commit: Yoruldum
+[33me05dc43[m HEAD@{27}: checkout: moving from main to Duhan
+[33me05dc43[m HEAD@{28}: merge Duhan: Fast-forward
+[33m2c44d5c[m HEAD@{29}: checkout: moving from Duhan to main
+[33me05dc43[m HEAD@{30}: commit: Cumartesi Sabah Son
+[33m2c44d5c[m HEAD@{31}: checkout: moving from main to Duhan
+[33m2c44d5c[m HEAD@{32}: merge Duhan: Fast-forward
+[33m2e796de[m HEAD@{33}: checkout: moving from Duhan to main
+[33m2c44d5c[m HEAD@{34}: commit: Main Menu and Pixture Renderer
+[33m2e796de[m HEAD@{35}: checkout: moving from main to Duhan
+[33m2e796de[m HEAD@{36}: checkout: moving from Ciao to main
+[33mc456cb4[m[33m ([m[1;31morigin/Ciao[m[33m, [m[1;32mCiao[m[33m)[m HEAD@{37}: checkout: moving from main to Ciao
+[33m2e796de[m HEAD@{38}: merge Duhan: Fast-forward
+[33m01be6d7[m HEAD@{39}: checkout: moving from Duhan to main
+[33m2e796de[m HEAD@{40}: commit: Dogru Foto Cekimi
+[33m01be6d7[m HEAD@{41}: merge main: Fast-forward
+[33mf481ecd[m HEAD@{42}: checkout: moving from main to Duhan
+[33m01be6d7[m HEAD@{43}: merge Duhan: Merge made by the 'ort' strategy.
+[33mc456cb4[m[33m ([m[1;31morigin/Ciao[m[33m, [m[1;32mCiao[m[33m)[m HEAD@{44}: checkout: moving from Duhan to main
+[33mf481ecd[m HEAD@{45}: commit: Hareket
+[33m3930541[m HEAD@{46}: checkout: moving from main to Duhan
+[33m3930541[m HEAD@{47}: Branch: renamed refs/heads/Duhan to refs/heads/main
+[33m3930541[m HEAD@{49}: checkout: moving from main to Duhan
+[33m3930541[m HEAD@{50}: merge Duhan: Fast-forward
+[33m8743f69[m HEAD@{51}: checkout: moving from Duhan to main
+[33m3930541[m HEAD@{52}: commit: Deneme
+[33m8743f69[m HEAD@{53}: checkout: moving from main to Duhan
+[33m8743f69[m HEAD@{54}: checkout: moving from Duhan to main
+[33m8743f69[m HEAD@{55}: checkout: moving from main to Duhan
+[33m8743f69[m HEAD@{56}: merge Duhan: Fast-forward
+[33mbd938c9[m HEAD@{57}: checkout: moving from Duhan to main
+[33m8743f69[m HEAD@{58}: commit: Start
+[33mbd938c9[m HEAD@{59}: checkout: moving from main to Duhan
+[33mbd938c9[m HEAD@{60}: commit (initial): Initial commit

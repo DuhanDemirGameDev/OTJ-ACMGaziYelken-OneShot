@@ -293,14 +293,16 @@ MonoBehaviour:
   text: {fileID: 894756683}
   audioSource: {fileID: 472408476}
   cutsceneItems:
-  - image: {fileID: 21300000, guid: 8acdff1b9f011c544815b5e95331aab1, type: 3}
-    lines: []
-  - image: {fileID: 21300000, guid: ca5badd84c10e774ba154e57dbf8b557, type: 3}
+  - image: {fileID: 21300000, guid: cfa24a3aae625de43be9dc3772c5c827, type: 3}
     lines:
-    - text: "1 tane duhan varm\u0131\u015F\u015F\u015F."
+    - text: "Tarek bu gizeml tarikat\u0131n i\u015Fledi\u011Fi t\xFCm su\xE7lar\u0131n
+        delillerini bulmu\u015Ftur."
       audioClip: {fileID: 8300000, guid: 0d8627befa8031c439e2ef9d77764500, type: 3}
-    - text: "2 tane duhan varm\u0131\u015F\u015F\u015F."
-      audioClip: {fileID: 8300000, guid: 7c0af1366e5c7bc459ba0931d12ac286, type: 3}
+    - text: "B\xFCt\xFCn delillerin bulunmas\u0131 ba\u015Fsavc\u0131y\u0131 ve t\xFCm
+        \xFClkeyi derinden etkilemi\u015Fti."
+      audioClip: {fileID: 8300000, guid: 0d8627befa8031c439e2ef9d77764500, type: 3}
+    - text: "Dedektif Tarek ismini tekrardan alt\u0131n harflerle tarihe kaz\u0131d\u0131."
+      audioClip: {fileID: 8300000, guid: 0d8627befa8031c439e2ef9d77764500, type: 3}
   displayTime: 5
   skipKey: 32
 --- !u!4 &472408475
@@ -643,7 +645,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1000, y: 100}
+  m_SizeDelta: {x: 1920, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &894756683
 MonoBehaviour:
@@ -947,8 +949,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 50}
-  m_SizeDelta: {x: 1000, y: 100}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 1920, y: 300}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &2058546085
 MonoBehaviour:
@@ -963,7 +965,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.58431375}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
